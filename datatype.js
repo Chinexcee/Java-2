@@ -1,21 +1,37 @@
-const buttonclick = document.getElementById ('buttoncheck')
+document.getElementById("body").innerHTML =
+  "Join our team by clicking the Register button below";
 
-buttoncheck.onclick = () => {
+document.getElementById("button").innerHTML = "Register";
 
+const buttonclick = document.getElementById("button");
 
-  const username = prompt ("ENTER USERNAME")
-  const passcode = prompt ("Enter passcode");
+buttonclick.onclick = () => {
+  const userName = prompt("Enter your username");
+  // const username = Username.trim();
 
-  alert ('welcome' + (username) + "click ok to continue checking the DATATYPE of your informations");
+  if (typeof userName === "string" && isNaN(userName)) {
+    alert(
+      "The datatype you entered is a " +
+        typeof userName +
+        " ,proceed and enter your phone number"
+    );
+  } else {
+    alert("The datatype you entered is not a string, check what you entered");
+    return;
+  }
 
+  const phoneNumber = prompt("Enter your Phone number");
+  // console.log(typeof Phonenumber);
+  const numericphone = parseInt(phoneNumber);
 
-  const convapss = (parseInt(passcode))
-
-  const usernametype = ( typeof(username))
-  const passcodetype = (typeof(convapss))
-
-  const resultElement = document.getElementById('result');
-  resultElement.innerHTML = username + " \n THE DATATYPE  OF YOUR USERNAME IS A \n"  + usernametype + "<br> <br>"; 
-  resultElement.innerHTML += " AND YOUR PASSCODE IS A \n" + passcodetype;
-
-}
+  if (
+    typeof numericphone === "number" &&
+    !isNaN(numericphone) &&
+    phoneNumber.length === 11 &&
+    phoneNumber.charAt(0) === "0"
+  ) {
+    alert("The datatype you entered is a number");
+  } else {
+    alert("The datatype you entered is not a number");
+  }
+};
